@@ -5,6 +5,8 @@ const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const authRoute = require("./routes/AuthRoute");
 
 const { HoldingsModel } = require("./model/HoldingsModel");
 const { PositionsModel } = require("./model/PositionsModel");
@@ -192,10 +194,18 @@ async function main() {
 //   res.send("position saved");
 // });
 
-app.use(cors());
+app.use(cookieParser());
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "http://localhost:5174"],
+    credentials: true,
+  }),
+);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use("/", authRoute);
 
 app.get("/allHoldings", async (req, res) => {
   let allHoldings = await HoldingsModel.find({});

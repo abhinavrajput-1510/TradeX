@@ -1,6 +1,8 @@
 import "./App.css";
 import HomePage from "./landing_page/home/HomePage";
+import Login from "./landing_page/signup/Login";
 import Signup from "./landing_page/signup/Signup";
+import SignupHome from "./landing_page/signup/SignupHome";
 import AboutPage from "./landing_page/about/AboutPage";
 import ProductsPage from "./landing_page/products/ProductsPage";
 import PricingPage from "./landing_page/pricing/PricingPage";
@@ -18,7 +20,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/home" element={<SignupHome />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/product" element={<ProductsPage />} />
           <Route path="/pricing" element={<PricingPage />} />

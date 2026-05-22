@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
+import axios from "axios";
 
 const Menu = () => {
   let [selectedMenu, setSelectedMenu] = useState(0);
@@ -12,6 +13,25 @@ const Menu = () => {
   };
   const handleProfileClick = (index) => {
     setIsProfileDropdownOpen(!isProfileDropdownOpen);
+  };
+
+  const handleLogout = async () => {
+    fetch("http://localhost:8080/logout", {
+      method: "POST",
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) {
+          window.location.href = "http://localhost:5173/login";
+        } else {
+          alert("Logout failed");
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("An error occurred while logging out");
+      });
   };
 
   const menuClass = "menu";
@@ -100,7 +120,7 @@ const Menu = () => {
                   <AccountCircleIcon />
                   <li>Profile</li>
                 </div>
-                <div className="profile-dropdown-item">
+                <div className="profile-dropdown-item" onClick={handleLogout}>
                   <LogoutIcon />
                   <li>Logout</li>
                 </div>
