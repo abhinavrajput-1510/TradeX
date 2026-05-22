@@ -166,11 +166,11 @@ http://localhost:5174
 
 | Holdings Analytics | Funds |
 |--------------------|-------|
-| ![](./screenshots/dashboard-holdings2.png) | ![](./screenshots/dashboard-funds.png) |
+| ![](./screenshots/dashboard-hodlings2.png) | ![](./screenshots/dashboard-funds.png) |
 
 | Positions |
 |------------|
-| ![](./screenshots/dashboard-position.png) |
+| ![](./screenshots/dasboard-position.png) |
 
 ---
 
